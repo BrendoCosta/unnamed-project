@@ -1,0 +1,49 @@
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@import "primereact/resources/themes/lara-light-indigo/theme.css" layer(primereact);
+@import "primeicons/primeicons.css" layer(primereact);
+
+@layer tailwind-base
+{
+    @tailwind base;
+}
+
+@layer tailwind-utilities
+{
+    @tailwind components;
+    @tailwind utilities;
+}
+
+@keyframes slidedown
+{
+    0%
+    {
+        max-height: 0;
+    }
+    100%
+    {
+        max-height: auto;
+    }
+}
+
+@keyframes slideup
+{
+    0%
+    {
+        max-height: 1000px;
+    }
+    100%
+    {
+        max-height: 0;
+    }
+}
+
+.slidedown
+{
+    animation: slidedown 0.3s cubic-bezier(0, 0.5, 0, 1);
+}
+
+.slideup
+{
+    animation: slideup 0.3s cubic-bezier(0, 1, 0, 1);
+}
