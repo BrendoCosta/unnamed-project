@@ -4,16 +4,16 @@ defmodule Izumi.Endpoint do
 
   #require Logger
 
-  plug :match
-  plug :dispatch
-  #plug Plug.Logger
   plug Plug.Parsers,
     parsers: [:json, :urlencoded],
     json_decoder: Jason
+  plug :match
+  plug :dispatch
+  #plug Plug.Logger
 
   # Forwarding
   # forward "/v2", to: Izumi.V2.Router
-  forward "/v1", to: Izumi.V1.Router
+  forward "/users", to: Izumi.Controller.UserController
 
   # You should put a catch-all here
   match _ do

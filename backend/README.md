@@ -2,4 +2,6 @@
 
 1. mix deps.get
 
-2. mix run --no-halt
+2. mix mongo.migrate
+
+3. mix run --no-halt
