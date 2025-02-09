@@ -11,11 +11,9 @@ defmodule Izumi.Model.User do
 
   defimpl Izumi.Model.EntitySchema do
     @spec schema(module | struct) :: any
-    def schema(_) do
-      %{
-        email: {:required, :string},
-        password: {:required, :string}
-      }
-    end
+    def schema(_), do: %{
+      email: {:required, :string},
+      password: {:required, :string}
+    }
   end
 end
