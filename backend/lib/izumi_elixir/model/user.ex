@@ -1,6 +1,4 @@
 defmodule Izumi.Model.User do
-  import Peri
-
   defstruct [
     :email,
     :password
@@ -11,8 +9,13 @@ defmodule Izumi.Model.User do
     password: String.t()
   }
 
-  defschema :user, %{
-    email: {:required, :string},
-    password: {:required, :string}
-  }
+  defimpl Izumi.Model.EntitySchema do
+    @spec schema(module | struct) :: any
+    def schema(_) do
+      %{
+        email: {:required, :string},
+        password: {:required, :string}
+      }
+    end
+  end
 end

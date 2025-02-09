@@ -1,4 +1,5 @@
 defmodule Izumi.Repository.UserRepository do
+  alias Izumi.Model.Entity
   alias Izumi.Model.User
 
   @collection "users"
@@ -12,9 +13,7 @@ defmodule Izumi.Repository.UserRepository do
 
   def find_by_email(email) do
     case Mongo.find_one(:mongo, @collection, %{email: email}) do
-      data when is_map(data) ->
-        {:ok, user} = User.user(data)
-        {:ok, struct(User, user)}
+      data when is_map(data) -> Entity.decode(User, data)
       nil -> {:ok, nil}
       {:error, _} = error -> error
     end
